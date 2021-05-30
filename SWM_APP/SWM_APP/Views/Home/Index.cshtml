@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using SWM_APP.Models.DdContext.Entity;
+@model IList<WSREF>
+
+<div id="div1">
+
+</div>
+
+@foreach(var link in Model)
+{
+<div style="padding:5px;border:1px solid black;border-radius:2px">
+    <button onclick="deleteWsrefGetForm(@link.Id)">Delete</button>
+    <button onclick="updateWsrefGetForm(@link.Id)">Update</button>
+    <button>+0</button>
+    <button>-0</button>
+    <button onclick="commentsWsrefGetForm(@link.Id)">Comment</button>
+    [@link.Id]
+    <a href="@link.Url" target="_blank">@link.Description</a>
+    <div id="div-@link.Id">
+
+    </div>
+</div>
+}
+
+@section Scripts{
+
+ }

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "-UWSR-";
+    ViewData["Name"] = $"-{ViewData["Title"]}-";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <h1>@($"-{ViewData["Title"]}-")</h1>
+    <div style="display:inline-flex;padding:5px">
+        <button id="insert" onclick="insertWsrefGetForm()">insert</button>
+        <button style="margin-left:4px">filter</button>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

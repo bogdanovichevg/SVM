@@ -1,0 +1,28 @@
+﻿@using SWM_APP.Models.DdContext.Entity
+@using SWM_APP.Models.DdContext
+@model WSREF
+@inject DatabaseContext Context
+<div style="border:1px solid black;border-radius:2px;padding:5px;">
+    <h2>-- UWSR Comments/@Model.Id --</h2>
+    <button onclick="insertCommentsWsrefGetForm(@Model.Id)">insert</button>
+    <div id="div-@Model.Id-comments" style="margin-bottom:10px">
+
+    </div>
+    @foreach (var el in Context.WSREFComment.Where(el => el.Wsref_id == Model.Id))
+    {
+        <div style="z-index: 1000; position: absolute; margin-top: -9px; margin-left: 69px; background: white;">@el.Stamp.ToString("yyyy-MM-dd")</div>
+        <div id="div-@Model.Id-comments-@el.Id" style="border:1px solid black;border-radius:2px;padding:5px;margin-bottom:10px">
+            @using (Html.BeginForm("CommentsDelete", "Home", FormMethod.Get))
+            {
+                <input type="hidden" name="id" value="@el.Id" style="display:block" />
+                <button type="submit">delete</button>
+            }
+            @using (Html.BeginForm("CommentsUpdate", "Home", FormMethod.Post))
+            {
+                <button type="submit">update</button>
+                <input type="hidden" name="id" value="@el.Id" style="display:block" />
+                <input type="text" name="Comtext" value="@el.Comtext" style="display:block" />
+            }
+        </div>
+    }
+</div>

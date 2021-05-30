@@ -1,0 +1,14 @@
+﻿@using SWM_APP.Models.DdContext.Entity
+@model WSREF
+<div style="border:1px solid black;border-radius:2px;padding:5px;">
+    @using (Html.BeginForm("Update", "Home", FormMethod.Post))
+    {
+        <input type="hidden" name="id" style="display:block" value="@Model.Id" />
+        <input type="text" name="url" style="display:block" value="@Model.Url" />
+        <input type="text" name="description" style="display:block" value="@Model.Description" />
+        <div style="display:inline-flex">
+            <button type="submit">OK</button>
+            <button type="reset" onclick="clearDiv('#div-@Model.Id')">Cancel</button>
+        </div>
+    }
+</div>
