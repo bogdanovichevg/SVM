@@ -12,17 +12,11 @@
     {
         <div style="z-index: 1000; position: absolute; margin-top: -9px; margin-left: 69px; background: white;">@el.Stamp.ToString("yyyy-MM-dd")</div>
         <div id="div-@Model.Id-comments-@el.Id" style="border:1px solid black;border-radius:2px;padding:5px;margin-bottom:10px">
-            @using (Html.BeginForm("CommentsDelete", "Home", FormMethod.Get))
-            {
-                <input type="hidden" name="id" value="@el.Id" style="display:block" />
-                <button type="submit">delete</button>
-            }
-            @using (Html.BeginForm("CommentsUpdate", "Home", FormMethod.Post))
-            {
-                <button type="submit">update</button>
-                <input type="hidden" name="id" value="@el.Id" style="display:block" />
-                <textarea asp-for="@el.Comtext" name="Comtext" style="display:block"></textarea>
-            }
+            <div style="margin-top:5px">
+                <button type="submit" onclick="deleteComGetForm(@Model.Id,@el.Id)">delete</button>
+                <button type="submit" onclick="updateComGetForm(@Model.Id,@el.Id)">update</button>
+            </div>
+            <textarea asp-for="@el.Comtext" name="Comtext" style="display:block" disabled></textarea>
         </div>
     }
 </div>

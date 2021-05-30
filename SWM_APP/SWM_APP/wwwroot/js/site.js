@@ -23,6 +23,20 @@ function insertCommentsWsrefGetForm(id) {
 
 }
 
+function deleteComGetForm(id, idCom) {
+    $('#div-' + id + '-comments-' + idCom).load('http://localhost:56754/CommentsGetFormDelete/' + idCom);
+
+}
+
+function updateComGetForm(id, idCom) {
+    $('#div-' + id + '-comments-' + idCom).load('http://localhost:56754/CommentsGetFormUpdate/' + idCom);
+
+}
+
+function closeDeleteComGetForm(id) {
+    $('#div-' + id + '-comments').load('http://localhost:56754/commentsinsert/' + id);
+}
+
 
 function clearDiv(id) {
     $(id).html("")

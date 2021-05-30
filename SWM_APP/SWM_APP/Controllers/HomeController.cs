@@ -167,10 +167,10 @@ namespace SWM_APP.Controllers
         [HttpPost("CommentsUpdate")]
         public IActionResult CommentsUpdate(WSREFCOMMENT comment)
         {
-            var user = _context.WSREFComment.Find(comment.Id);
-            user.Stamp = DateTime.UtcNow;
-            user.Comtext = comment.Comtext;
-            _context.Update(user);
+            var commentd = _context.WSREFComment.Find(comment.Id);
+            commentd.Stamp = DateTime.UtcNow;
+            commentd.Comtext = comment.Comtext;
+            _context.Update(commentd);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
@@ -178,10 +178,24 @@ namespace SWM_APP.Controllers
         [HttpGet("CommentsDelete")]
         public IActionResult CommentsDelete(int id)
         {
-            var user = _context.WSREFComment.Find(id);
-            _context.Remove(user);
+            var comment = _context.WSREFComment.Find(id);
+            _context.Remove(comment);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet("CommentsGetFormDelete/{id}")]
+        public IActionResult GetFormDeleteComment(int id)
+        {
+            var comment = _context.WSREFComment.Find(id);
+            return PartialView("_CommentsGetFormDelete", comment);
+        }
+
+        [HttpGet("CommentsGetFormUpdate/{id}")]
+        public IActionResult GetFormDeleteUpdate(int id)
+        {
+            var comment = _context.WSREFComment.Find(id);
+            return PartialView("_CommentsGetFormUpdate", comment);
         }
     }
 }

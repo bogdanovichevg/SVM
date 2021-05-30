@@ -1,0 +1,10 @@
+﻿@using SWM_APP.Models.DdContext.Entity
+@model WSREFCOMMENT
+@using (Html.BeginForm("CommentsDelete", "Home", FormMethod.Get))
+{
+    <input type="hidden" name="id" value="@Model.Id" style="display:block" />
+    <div>delete</div>
+    <textarea asp-for="@Model.Comtext" style="display:block"></textarea>
+    <button type="submit">delete</button>
+}
+<button onclick="commentsWsrefGetForm(@Model.Wsref_id)">close</button>

@@ -57,3 +57,5 @@ C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\Home\_CommentsInsert.cshtml.g.cs
 C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Filter.cshtml.g.cs
 C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\Home\_SignIn.cshtml.g.cs
+C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\Home\_CommentsGetFormDelete.cshtml.g.cs
+C:\Users\Admin\source\repos\SWM_APP\SWM_APP\obj\Debug\netcoreapp3.1\Razor\Views\Home\_CommentsGetFormUpdate.cshtml.g.cs

@@ -1,0 +1,10 @@
+﻿@using SWM_APP.Models.DdContext.Entity
+@model WSREFCOMMENT
+@using (Html.BeginForm("CommentsUpdate", "Home", FormMethod.Post))
+{
+    <input type="hidden" name="id" value="@Model.Id" style="display:block" />
+    <div>update</div>
+    <textarea asp-for="@Model.Comtext" name="Comtext" style="display:block"></textarea>
+    <button type="submit">update</button>
+}
+<button onclick="commentsWsrefGetForm(@Model.Wsref_id)">close</button>
