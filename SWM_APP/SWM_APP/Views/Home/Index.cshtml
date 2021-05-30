@@ -1,30 +1,44 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@using Microsoft.AspNetCore.Http;
 @using SWM_APP.Models.DdContext.Entity;
+@using System.Linq;
 @model IList<WSREF>
 
 <div id="div1">
 
 </div>
 
-@foreach(var link in Model)
+@foreach (var link in Model)
 {
-<div style="padding:5px;border:1px solid black;border-radius:2px">
-    <button onclick="deleteWsrefGetForm(@link.Id)">Delete</button>
-    <button onclick="updateWsrefGetForm(@link.Id)">Update</button>
-    <button>+0</button>
-    <button>-0</button>
-    <button onclick="commentsWsrefGetForm(@link.Id)">Comment</button>
-    [@link.Id]
-    <a href="@link.Url" target="_blank">@link.Description</a>
-    <div id="div-@link.Id">
+    <div style="padding:5px;border:1px solid black;border-radius:2px">
+        @if (!String.IsNullOrEmpty(Context.Session.GetString("IsAdmin")))
+        {
+            <button onclick="deleteWsrefGetForm(@link.Id)">Delete</button>
+            <button onclick="updateWsrefGetForm(@link.Id)">Update</button>
+        }
+        <div style="display: inline-flex;">
+            @using (Html.BeginForm("AddInc", "Home", FormMethod.Post, new { style = "width:max-content" }))
+            {
+                <input type="hidden" name="id" value="@link.Id" />
+                <button type="submit">+@link.Plus</button>
+            }
+            @using (Html.BeginForm("RemInc", "Home", FormMethod.Post, new { style = "width:max-content; margin-left:4px" }))
+            {
+                <input type="hidden" name="id" value="@link.Id" />
+                <button type="submit">-@link.Minus</button>
+            }
+        </div>
+        <button onclick="commentsWsrefGetForm(@link.Id)">Comment</button>
+        [@link.Id]
+        <a href="@link.Url" target="_blank">@link.Description</a>
+        <div id="div-@link.Id">
 
+        </div>
     </div>
-</div>
 }
 
 @section Scripts{
 
- }
+}

@@ -1,0 +1,12 @@
+﻿@section SignIn{
+    <div style="border:1px solid black;border-radius:2px;padding:5px;">
+        @using (Html.BeginForm("signInCheck", "Home", FormMethod.Post))
+        {
+            <input type="text" name="password" style="display:block" />
+            <div style="display:inline-flex">
+                <button type="submit">Set</button>
+                <button type="reset">Reset</button>
+            </div>
+        }
+    </div>
+}

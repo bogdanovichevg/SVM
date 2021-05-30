@@ -2,6 +2,7 @@
     ViewData["Title"] = "-UWSR-";
     ViewData["Name"] = $"-{ViewData["Title"]}-";
 }
+@using Microsoft.AspNetCore.Http;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,20 @@
 </head>
 <body>
     <h1>@($"-{ViewData["Title"]}-")</h1>
+    @RenderSection("SignIn", required: false)
+    @if (!String.IsNullOrEmpty(Context.Session.GetString("IsAdmin")))
+    {
+        @using (Html.BeginForm("SignInReset", "Home", FormMethod.Post))
+        {
+            <button type="submit">Reset</button>
+        }
+    }
     <div style="display:inline-flex;padding:5px">
-        <button id="insert" onclick="insertWsrefGetForm()">insert</button>
-        <button style="margin-left:4px">filter</button>
+        @if (!String.IsNullOrEmpty(Context.Session.GetString("IsAdmin")))
+        {
+            <button id="insert" onclick="insertWsrefGetForm()">insert</button>
+        }
+        <button style="margin-left:4px" onclick="filterWsrefGetForm()">filter</button>
     </div>
     <div>
         @RenderBody()

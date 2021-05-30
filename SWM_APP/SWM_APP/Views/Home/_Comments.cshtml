@@ -21,7 +21,7 @@
             {
                 <button type="submit">update</button>
                 <input type="hidden" name="id" value="@el.Id" style="display:block" />
-                <input type="text" name="Comtext" value="@el.Comtext" style="display:block" />
+                <textarea asp-for="@el.Comtext" name="Comtext" style="display:block"></textarea>
             }
         </div>
     }

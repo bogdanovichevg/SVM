@@ -26,6 +26,7 @@ namespace SWM_APP
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(connection));
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddControllersWithViews();
         }
@@ -45,6 +46,7 @@ namespace SWM_APP
 
             app.UseRouting();
 
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

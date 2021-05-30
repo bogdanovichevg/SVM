@@ -2,6 +2,10 @@
     $('#div1').load('http://localhost:56754/insert');
 }
 
+function filterWsrefGetForm() {
+    $('#div1').load('http://localhost:56754/filterform');
+}
+
 function updateWsrefGetForm(id){
     $('#div-'+id).load('http://localhost:56754/update/'+id);
 }
